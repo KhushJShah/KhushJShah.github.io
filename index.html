@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khush Shah - Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #50a3a2;
+            color: white;
+            padding-top: 30px;
+            min-height: 70px;
+            text-align: center;
+        }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .slider {
+            overflow: hidden;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+        }
+        .slide {
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+            margin-right: 20px;
+            background: #eee;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background: #50a3a2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://github.com/KhushJShah.png" alt="Khush Shah">
+        <h1>Khush Shah</h1>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>About Me</h2>
+            <p>I am an insights enthusiast, and for me, data is the 5th dimension. I'm passionate about exploring data for effective analysis, uncovering hidden patterns, and deriving meaningful insights that drive decision-making.</p>
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <ul>
+                <li>Python, R, C++, SQL</li>
+                <li>Machine Learning, Deep Learning</li>
+                <li>Data Analysis and Visualization</li>
+                <li>TensorFlow, PyTorch, Keras</li>
+                <li>AWS, GCP, Docker, Kubernetes</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Computer Vision - Google</li>
+                <li>Natural Language Processing (NLP) - Google</li>
+                <li>MLOps - DataCamp</li>
+                <li>Git, Tableau, DAX in PowerBI - DataCamp</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Publication</h2>
+            <p>"AI and Blockchain-Assisted Secure Data-Exchange Framework for Smart Home Systems" - MDPI</p>
+        </div>
+
+        <div class="section">
+            <h2>Work Experience</h2>
+            <ul>
+                <li>Data Scientist at XYZ Corp (2023 - Present)</li>
+                <li>Machine Learning Engineer at ABC Tech (2021 - 2023)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Projects</h2>
+            <div class="slider" id="projectSlider">
+                <div class="slide">
+                    <h3>Medical Amenity Predictor</h3>
+                    <p>Reduced emergency response time by 15% using clustering algorithms.</p>
+                </div>
+                <div class="slide">
+                    <h3>REN.AI</h3>
+                    <p>Developed real-time predictive analytics for renewable energy trading platforms.</p>
+                </div>
+                <div class="slide">
+                    <h3>Video Forgery Detection</h3>
+                    <p>Improved detection accuracy by 2% using GRU and VGG models.</p>
+                </div>
+                <div class="slide">
+                    <h3>Speech Emotion Recognition</h3>
+                    <p>Achieved 65% accuracy using LSTM and CNN models.</p>
+                </div>
+                <div class="slide">
+                    <h3>Reliant</h3>
+                    <p>Improved clinical trial participant retention by 50% with a GPT-based chatbot.</p>
+                </div>
+            </div>
+            <div class="controls">
+                <button onclick="slide(-1)">Previous</button>
+                <button onclick="slide(1)">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slider = document.getElementById('projectSlider');
+
+        function slide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            slider.scrollLeft = slides[currentSlide].offsetLeft;
+        }
+    </script>
+</body>
+</html>
