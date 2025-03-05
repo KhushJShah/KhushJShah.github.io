@@ -50,18 +50,21 @@
             padding: 10px 0;
             border-bottom: 1px solid #ddd;
         }
-        .slider {
+        .slider-container {
             overflow: hidden;
-            white-space: nowrap;
-            scroll-behavior: smooth;
+            width: 100%;
+            position: relative;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
         }
         .slide {
-            display: inline-block;
-            width: 300px;
-            height: 200px;
-            margin-right: 20px;
-            background: #eee;
+            flex: 0 0 100%;
+            max-width: 100%;
             padding: 20px;
+            box-sizing: border-box;
+            background: #eee;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
@@ -76,6 +79,11 @@
             padding: 10px 20px;
             cursor: pointer;
             margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3a7a79;
         }
     </style>
 </head>
@@ -94,11 +102,10 @@
         <div class="section">
             <h2>Skills</h2>
             <ul>
-                <li>Python, R, C++, SQL</li>
-                <li>Machine Learning, Deep Learning</li>
-                <li>Data Analysis and Visualization</li>
-                <li>TensorFlow, PyTorch, Keras</li>
-                <li>AWS, GCP, Docker, Kubernetes</li>
+                <li>Programming Languages: Python, R, C++, SQL, Java</li>
+                <li>ML Frameworks: Sklearn, Numpy, Pandas, Tensorflow, PyTorch, Keras</li>
+                <li>Coursework: Deep Learning, Machine Learning, GIS, Linux for DevOps, Data Visualization, Data Mining</li>
+                <li>Tools: PowerBI, Tableau, AWS, GCP, Docker, Kubernetes</li>
             </ul>
         </div>
 
@@ -108,7 +115,10 @@
                 <li>Computer Vision - Google</li>
                 <li>Natural Language Processing (NLP) - Google</li>
                 <li>MLOps - DataCamp</li>
-                <li>Git, Tableau, DAX in PowerBI - DataCamp</li>
+                <li>Git - DataCamp</li>
+                <li>DAX in PowerBI - DataCamp</li>
+                <li>Tableau - DataCamp</li>
+                <li>Object Oriented Programming - DataCamp</li>
             </ul>
         </div>
 
@@ -120,33 +130,38 @@
         <div class="section">
             <h2>Work Experience</h2>
             <ul>
-                <li>Data Scientist at XYZ Corp (2023 - Present)</li>
-                <li>Machine Learning Engineer at ABC Tech (2021 - 2023)</li>
+                <li>Data Science Intern at ORDEX Technology Solutions (Jun 2024 - Present)</li>
+                <li>Capstone Intern at George Washington University (Jan 2025 - Present)</li>
+                <li>Research Specialist at George Washington University (Aug 2024 - Dec 2024)</li>
+                <li>Site Reliability Engineer at Crest Data Systems (Jan 2023 - Jun 2023)</li>
+                <li>Data Science Intern at Adani Group (Jun 2022 - Jul 2022)</li>
             </ul>
         </div>
 
         <div class="section">
             <h2>Projects</h2>
-            <div class="slider" id="projectSlider">
-                <div class="slide">
-                    <h3>Medical Amenity Predictor</h3>
-                    <p>Reduced emergency response time by 15% using clustering algorithms.</p>
-                </div>
-                <div class="slide">
-                    <h3>REN.AI</h3>
-                    <p>Developed real-time predictive analytics for renewable energy trading platforms.</p>
-                </div>
-                <div class="slide">
-                    <h3>Video Forgery Detection</h3>
-                    <p>Improved detection accuracy by 2% using GRU and VGG models.</p>
-                </div>
-                <div class="slide">
-                    <h3>Speech Emotion Recognition</h3>
-                    <p>Achieved 65% accuracy using LSTM and CNN models.</p>
-                </div>
-                <div class="slide">
-                    <h3>Reliant</h3>
-                    <p>Improved clinical trial participant retention by 50% with a GPT-based chatbot.</p>
+            <div class="slider-container">
+                <div class="slider" id="projectSlider">
+                    <div class="slide">
+                        <h3>Medical Amenity Predictor</h3>
+                        <p>Reduced emergency response time by 15% using clustering algorithms.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>REN.AI</h3>
+                        <p>Developed real-time predictive analytics for renewable energy trading platforms.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Video Forgery Detection</h3>
+                        <p>Improved detection accuracy by 2% using GRU and VGG models.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Speech Emotion Recognition</h3>
+                        <p>Achieved 65% accuracy using LSTM and CNN models.</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Reliant</h3>
+                        <p>Improved clinical trial participant retention by 50% with a GPT-based chatbot.</p>
+                    </div>
                 </div>
             </div>
             <div class="controls">
@@ -158,14 +173,19 @@
 
     <script>
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
         const slider = document.getElementById('projectSlider');
+        const slides = slider.children;
+        const totalSlides = slides.length;
 
         function slide(direction) {
             currentSlide += direction;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
-            if (currentSlide >= slides.length) currentSlide = 0;
-            slider.scrollLeft = slides[currentSlide].offsetLeft;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
     </script>
 </body>
